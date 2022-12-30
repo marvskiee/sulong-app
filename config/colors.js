@@ -9,4 +9,6 @@ export default {
   darkgray: "#222",
   red: "#B3001B",
   lightred: "#dc3535",
+  green: "#82cd47",
+  yellow: "#ffbf00",
 };

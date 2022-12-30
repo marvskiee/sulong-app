@@ -38,23 +38,6 @@ const NavigateToDetails = ({ navigation }, name) => {
   navigation.navigate(name);
 };
 const Home = (props) => {
-  const isFocused = useIsFocused();
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const load = async () => {
-      const res = await getNotification(props.auth?.accessToken);
-      if (res.success) {
-        const filter = res.data.filter(
-          (r) =>
-            r.email == props.user?.email &&
-            r.status == null &&
-            r.receiver == "user"
-        );
-        setData(filter);
-      }
-    };
-    load();
-  }, [isFocused]);
   const items = [
     {
       label: "Dashboard",
@@ -150,19 +133,6 @@ const Home = (props) => {
           hidden={false}
         />
         <View style={styles.sosButtonWrapper}>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={async () => {
-              NavigateToDetails(props, "notifications");
-            }}
-          >
-            <View style={styles.bellButton}>
-              <Bell />
-              {data.length > 0 && (
-                <Text style={styles.bellBadge}>{data.length}</Text>
-              )}
-            </View>
-          </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => {

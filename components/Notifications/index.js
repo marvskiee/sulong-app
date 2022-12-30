@@ -100,9 +100,11 @@ const Notifications = (props) => {
               <Text
                 style={{
                   backgroundColor:
-                    item?.condition != "Completed"
+                    item?.condition == "Completed"
+                      ? colors.green
+                      : item?.condition == "Rejected"
                       ? colors.lightred
-                      : colors.violet,
+                      : colors.yellow,
                   color: colors.white,
                   paddingHorizontal: 8,
                   fontSize: 10,
